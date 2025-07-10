@@ -6,10 +6,6 @@ class LibraryBookCategory(models.Model):
     _description = 'Book Category'
 
     name = fields.Char(string='Category Name', required=True)
-
-    _sql_constraints = [
-        ('name_unique', 'unique(name)', 'Category name must be unique.')
-    ]
     
     @api.constrains('name')
     def _check_name_unique(self):
