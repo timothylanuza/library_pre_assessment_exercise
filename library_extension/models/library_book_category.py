@@ -10,10 +10,10 @@ class LibraryBookCategory(models.Model):
     @api.constrains('name')
     def _check_name_unique(self):
         for rec in self:
-            existing = self.search([
+            duplicate = self.search([
                 ('name', '=', rec.name),
                 ('id', '!=', rec.id)
             ], limit=1)
-            if existing:
-                rec.name = False
+            for record in duplicate:
+                if rec.name.lower() = = record.name.lower():
                 raise UserError("Category name must be unique.")
